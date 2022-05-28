@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import requests
 
 with open("website.html", encoding="utf-8") as file:
     contents = file.read()
@@ -23,7 +24,10 @@ section_heading = soup.find(name="h3", class_="heading")
 
 company_url = soup.select_one(selector="p a")
 name = soup.select_one(selector="#name")
-print(name)
-
+# print(name)
+#
 headings = soup.select(".heading")
-print(headings)
+# print(headings)
+
+response = requests.get("https://news.ycombinator.com/news")
+print(response.text)
